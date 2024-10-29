@@ -3,7 +3,7 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div>
+    <div className="bg-sky-100 min-h-screen">
       <Header />
       <Outlet/>
     </div>

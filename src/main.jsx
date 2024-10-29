@@ -8,9 +8,11 @@ import Home from "./pages/HomePage.jsx";
 import Login from "./pages/Login.jsx";
 import store from "./store/store.js";
 import { Provider } from "react-redux";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import DashBoard from "./pages/DashBoard.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
 
-const googleClientId = "926740365354-s6tnvgu9cd79f8d9v9rvs7krnm8d0qir.apps.googleusercontent.com";
+// const googleClientId =
+//   "926740365354-s6tnvgu9cd79f8d9v9rvs7krnm8d0qir.apps.googleusercontent.com";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "/home",
         element: <Home />,
       },
       {
@@ -30,14 +32,20 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      {
+        path: "/dashboard",
+        element: <DashBoard />,
+      },
+      {
+        path: "/resetPassword",
+        element: <ResetPassword />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <GoogleOAuthProvider clientId={googleClientId}>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </GoogleOAuthProvider>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );
