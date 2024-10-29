@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { setUser } from "../store/slicer/authSlice";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
@@ -22,7 +22,7 @@ const handleApiError = (error) => {
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [loginError, setLoginError] = useState(null); 
+  const [loginError, setLoginError] = useState(null);
   const {
     register,
     handleSubmit,
@@ -33,7 +33,10 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("http://192.168.68.117:8000/api/login", data);
+      const response = await axios.post(
+        "http://192.168.68.117:8000/api/login",
+        data
+      );
       dispatch(setUser(response.data));
       navigate("/");
     } catch (error) {
@@ -47,12 +50,18 @@ const Login = () => {
       <p>Login</p>
       <div className="mt-2 h-[2px] bg-sky-950" />
 
-      {loginError && <p className="text-red-500 mb-4">{loginError}</p>} 
+      {loginError && <p className="text-red-500 mb-4">{loginError}</p>}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 mt-6 ">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-4 mt-6 "
+      >
         <label className="flex flex-col">
           <span className="mb-2">Email:</span>
-          <input className="outline w-full p-2 rounded text-black" {...register("email")} />
+          <input
+            className="outline w-full p-2 rounded text-black"
+            {...register("email")}
+          />
           <p className="text-red-500">{errors.email?.message}</p>
         </label>
 
@@ -72,6 +81,9 @@ const Login = () => {
         >
           Login
         </button>
+        <NavLink to={"/forgotPassword"} className="text-yellow-500">
+          Forgot Password
+        </NavLink>
       </form>
     </div>
   );

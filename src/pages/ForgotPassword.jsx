@@ -8,7 +8,7 @@ const schema = yup.object({
   email: yup.string().email().required("Email is required."),
 });
 
-const ResetPassword = () => {
+const ForgotPassword = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -25,7 +25,7 @@ const ResetPassword = () => {
         data
       );
       console.log(response);
-      navigate("/");
+      navigate("/otppage");
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +33,7 @@ const ResetPassword = () => {
 
   return (
     <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-sky-900 text-white">
-      <p>Reset Password</p>
+      <p>Forgot Password</p>
       <div className="mt-2 h-[2px] bg-sky-950" />
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -56,4 +56,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ForgotPassword;

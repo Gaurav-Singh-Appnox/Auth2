@@ -9,7 +9,9 @@ import Login from "./pages/Login.jsx";
 import store from "./store/store.js";
 import { Provider } from "react-redux";
 import DashBoard from "./pages/DashBoard.jsx";
-import ResetPassword from "./pages/ResetPassword.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
+import NewPassword from "./pages/NewPassword.jsx";
+import OTPPage from "./pages/OTPPage.jsx";
 
 // const googleClientId =
 //   "926740365354-s6tnvgu9cd79f8d9v9rvs7krnm8d0qir.apps.googleusercontent.com";
@@ -37,8 +39,16 @@ const router = createBrowserRouter([
         element: <DashBoard />,
       },
       {
-        path: "/resetPassword",
-        element: <ResetPassword />,
+        path: "/forgotPassword",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/newPassword",
+        element: <NewPassword />,
+      },
+      {
+        path: "/otppage",
+        element: <OTPPage />,
       },
     ],
   },
