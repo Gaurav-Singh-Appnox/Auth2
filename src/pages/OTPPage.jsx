@@ -20,7 +20,7 @@ const OTPPage = () => {
   return (
     <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-sky-900 text-white">
       <p>Enter OTP</p>
-      <div className="h-[2px] bg-sky-950 mb-6 mt-2" />
+      <div className="h-[2px]  bg-sky-950 mb-6 mt-2" />
       <OtpInput
         className="mt-8"
         value={otp}
@@ -30,8 +30,7 @@ const OTPPage = () => {
         renderInput={(props) => (
           <input
             {...props}
-            className="w-16 h-6 text-center border-2 border-white rounded-md bg-sky-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
-            // Tailwind styles for the input
+            className="w-12  text-center border-2 border-white rounded-md bg-sky-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
           />
         )}
       />

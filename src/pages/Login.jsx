@@ -14,7 +14,7 @@ const schema = yup.object({
 
 const handleApiError = (error) => {
   if (error.response?.data?.message) {
-    return error.response.data.message;
+    return error.response.statusText;
   }
   return "An unknown error occurred. Please try again.";
 };
@@ -37,6 +37,8 @@ const Login = () => {
         "http://192.168.68.117:8000/api/login",
         data
       );
+      console.log("login response", response.data);
+
       dispatch(setUser(response.data));
       navigate("/");
     } catch (error) {

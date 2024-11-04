@@ -9,12 +9,9 @@ import Login from "./pages/Login.jsx";
 import store from "./store/store.js";
 import { Provider } from "react-redux";
 import DashBoard from "./pages/DashBoard.jsx";
-import ForgotPassword from "./pages/ForgotPassword.jsx";
-import NewPassword from "./pages/NewPassword.jsx";
-import OTPPage from "./pages/OTPPage.jsx";
-
-// const googleClientId =
-//   "926740365354-s6tnvgu9cd79f8d9v9rvs7krnm8d0qir.apps.googleusercontent.com";
+// import ForgotPassword from "./pages/ForgotPassword.jsx";
+import EditUserInfo from "./pages/EditUserInfo.jsx";
+import ChangePassword from "./pages/ChangePassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,17 +35,18 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <DashBoard />,
       },
+      // {
+      //   path: "/forgotPassword",
+      //   element: <ForgotPassword />,
+      // },
       {
-        path: "/forgotPassword",
-        element: <ForgotPassword />,
+        path: "/changePassword",
+        element: <ChangePassword />,
       },
+
       {
-        path: "/newPassword",
-        element: <NewPassword />,
-      },
-      {
-        path: "/otppage",
-        element: <OTPPage />,
+        path: "/editUser",
+        element: <EditUserInfo />,
       },
     ],
   },

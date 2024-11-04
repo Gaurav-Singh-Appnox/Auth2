@@ -25,7 +25,7 @@ const useRegisterForm = () => {
 
 const handleApiError = (error) => {
   if (error.response?.data?.message) {
-    return error.response.data.message;
+    return error.response.statusText;
   }
   return "An unknown error occurred. Please try again.";
 };
@@ -41,6 +41,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
+      setServerError(null);
       const response = await axios.post(
         "http://192.168.68.117:8000/api/register",
         data

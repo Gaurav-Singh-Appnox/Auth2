@@ -1,15 +1,17 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
 
 const schema = yup.object({
   email: yup.string().email().required("Email is required."),
 });
 
 const ForgotPassword = () => {
-  const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,15 +20,23 @@ const ForgotPassword = () => {
     resolver: yupResolver(schema),
   });
 
+  const handleApiError = (error) => {
+    if (error.response?.data?.message) {
+      return error.response.statusText;
+    }
+    return "An unknown error occurred. Please try again.";
+  };
+
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://192.168.68.117:8000/api/login",
+        "http://192.168.68.117:8000/api/user/reset-password",
         data
       );
       console.log(response);
-      navigate("/otppage");
+      // navigate("/otppage");
     } catch (error) {
+      setError(handleApiError(error));
       console.log(error);
     }
   };
@@ -34,6 +44,7 @@ const ForgotPassword = () => {
   return (
     <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-sky-900 text-white">
       <p>Forgot Password</p>
+      {error && <p className="text-red-500">{error}</p>}
       <div className="mt-2 h-[2px] bg-sky-950" />
       <form
         onSubmit={handleSubmit(onSubmit)}

@@ -13,9 +13,9 @@ const Header = () => {
     dispatch(logOut());
   };
 
-  const handleResetPassword =()=>{
+  // const handleResetPassword =()=>{
    
-  }
+  // }
   return (
     <div className="w-full shadow-md bg-blue-950">
       <div className="w-[80%] mx-auto flex justify-between py-3 items-center">
@@ -36,12 +36,13 @@ const Header = () => {
                 <NavLink className="text-red-700  " onClick={handleLogOut}>
                   Log Out
                 </NavLink>
-                <NavLink className="text-red-700  " onClick={handleResetPassword}>
+                {/* <NavLink className="text-red-700  " onClick={handleResetPassword}>
                   Reset Password
-                </NavLink>
+                </NavLink> */}
               </div>
             )}
           </div>
+
         ) : (
           <div className="flex gap-4">
             <NavLink

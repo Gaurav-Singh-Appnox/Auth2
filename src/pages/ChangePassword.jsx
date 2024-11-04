@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const schema = yup.object({
-  password: yup.string().required("Please enter your password"),
+  old_password: yup.string().required("Please enter your password"),
+  new_password: yup.string().required("Please enter your new password"),
   password_confirmation: yup
     .string()
-    .oneOf([yup.ref("password")], "Passwords must match")
+    .oneOf([yup.ref("new_password")], "Passwords must match")
     .required("Please confirm your password"),
 });
 
@@ -26,7 +27,7 @@ const handleApiError = (error) => {
   return "An unknown error occurred. Please try again.";
 };
 
-const NewPassword = () => {
+const ChangePassword = () => {
   const navigate = useNavigate();
   const [serverError, setServerError] = useState(null);
   const {
@@ -38,10 +39,10 @@ const NewPassword = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://192.168.68.117:8000/api/register",
+        "http://192.168.68.117:8000/api/user/update-password",
         data
       );
-      navigate("/login");
+      navigate("/");
       console.log(response);
     } catch (error) {
       setServerError(handleApiError(error));
@@ -51,7 +52,7 @@ const NewPassword = () => {
 
   return (
     <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-sky-900 text-white">
-      <p>Create New Password</p>
+      <p>Change Password</p>
       <div className="mt-2 h-[2px] bg-gray-400" />
 
       {serverError && <p className="text-red-500 mb-4">{serverError}</p>}
@@ -61,13 +62,22 @@ const NewPassword = () => {
         className="flex flex-col gap-4 mt-6"
       >
         <label className="flex flex-col gap-1">
+          <span> Old Password:</span>
+          <input
+            type="password"
+            className="outline rounded-md p-2 text-black"
+            {...register("old_password")}
+          />
+          <p className="text-red-500">{errors.old_password?.message ?? ""}</p>
+        </label>
+        <label className="flex flex-col gap-1">
           <span> New Password:</span>
           <input
             type="password"
             className="outline rounded-md p-2 text-black"
-            {...register("password")}
+            {...register("new_password")}
           />
-          <p className="text-red-500">{errors.password?.message ?? ""}</p>
+          <p className="text-red-500">{errors.new_password?.message ?? ""}</p>
         </label>
 
         <label className="flex flex-col gap-1">
@@ -93,4 +103,4 @@ const NewPassword = () => {
   );
 };
 
-export default NewPassword;
+export default ChangePassword;
