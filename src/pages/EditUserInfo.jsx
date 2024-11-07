@@ -45,8 +45,8 @@ const EditUserInfo = () => {
         }
       );
       dispatch(editUser(response));
-      navigate("/");
-      console.log(response);
+      navigate("/dashboard");
+      console.log(response.data.user);
     } catch (error) {
       console.log(error);
     }

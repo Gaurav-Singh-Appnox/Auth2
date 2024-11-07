@@ -39,10 +39,10 @@ const ChangePassword = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://192.168.68.117:8000/api/user/update-password",
+        "http://192.168.68.117:8000/api/user/change-password",
         data
       );
-      navigate("/");
+      navigate("/dashboard");
       console.log(response);
     } catch (error) {
       setServerError(handleApiError(error));

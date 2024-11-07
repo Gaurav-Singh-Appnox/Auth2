@@ -38,8 +38,9 @@ const Login = () => {
         data
       );
       console.log("login response", response.data);
-
       dispatch(setUser(response.data));
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("user", response.user);
       navigate("/");
     } catch (error) {
       setLoginError(handleApiError(error));

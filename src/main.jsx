@@ -9,7 +9,7 @@ import Login from "./pages/Login.jsx";
 import store from "./store/store.js";
 import { Provider } from "react-redux";
 import DashBoard from "./pages/DashBoard.jsx";
-// import ForgotPassword from "./pages/ForgotPassword.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
 import EditUserInfo from "./pages/EditUserInfo.jsx";
 import ChangePassword from "./pages/ChangePassword.jsx";
 
@@ -35,10 +35,10 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <DashBoard />,
       },
-      // {
-      //   path: "/forgotPassword",
-      //   element: <ForgotPassword />,
-      // },
+      {
+        path: "/forgotPassword",
+        element: <ForgotPassword />,
+      },
       {
         path: "/changePassword",
         element: <ChangePassword />,
