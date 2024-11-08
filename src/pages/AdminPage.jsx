@@ -53,6 +53,28 @@ const AdminPage = () => {
     }
   };
 
+  const handleRetrieve = async (userId) => {
+    try {
+      await axios.post(
+        `http://192.168.68.117:8000/api/dashboard/existinguser/trashlist/${userId}`
+      );
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (userId) => {
+    try {
+      await axios.post(
+        `http://192.168.68.117:8000/api/dashboard/existinguser/delete/${userId}`
+      );
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full min-h-screen bg-sky-100 pt-8">
       <div className="max-w-7xl w-[80%] mx-auto min-h-40 bg-blue-950 text-white p-4 rounded-md">
@@ -137,10 +159,16 @@ const AdminPage = () => {
                     <td className="px-4 py-2">{user.fname}</td>
                     <td className="px-4 py-2">{user.email}</td>
                     <td className="px-4 py-2">
-                      <button className="py-1 px-3 bg-green-500 text-white rounded-md">
+                      <button
+                        className="py-1 px-3 bg-green-500 text-white rounded-md"
+                        onClick={handleRetrieve(user.user_id)}
+                      >
                         Retrieve
                       </button>
-                      <button className="ml-2 py-1 px-3 bg-red-500 text-white rounded-md">
+                      <button
+                        className="ml-2 py-1 px-3 bg-red-500 text-white rounded-md"
+                        onClick={handleDelete(user.user_id)}
+                      >
                         Delete
                       </button>
                     </td>
