@@ -12,6 +12,7 @@ import DashBoard from "./pages/DashBoard.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import EditUserInfo from "./pages/EditUserInfo.jsx";
 import ChangePassword from "./pages/ChangePassword.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,8 +49,14 @@ const router = createBrowserRouter([
         path: "/editUser",
         element: <EditUserInfo />,
       },
+      {
+        path: "/admin",
+        element: <AdminPage />,
+        errorElement: <ErrorPage />,
+      },
     ],
   },
+  
 ]);
 
 createRoot(document.getElementById("root")).render(

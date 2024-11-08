@@ -18,7 +18,7 @@ const OTPPage = () => {
   };
 
   return (
-    <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-sky-900 text-white">
+    <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-blue-950 text-white">
       <p>Enter OTP</p>
       <div className="h-[2px]  bg-sky-950 mb-6 mt-2" />
       <OtpInput

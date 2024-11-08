@@ -55,7 +55,7 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-sky-900 text-white">
+    <div className="max-w-[600px] w-[80vw] mx-auto mt-8 shadow-md rounded-md p-8 bg-blue-950 text-white">
       <p>Register</p>
       <div className="mt-2 h-[2px] bg-gray-400" />
 
